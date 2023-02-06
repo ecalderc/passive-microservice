@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: passive
+  profiles:
+    active: prod
+  cloud:
+    config:
+      enabled: true
+      uri:
+        - https://config-server-ecalderc.azurewebsites.net
+        - http://localhost:8888
+      fail-fast: true
