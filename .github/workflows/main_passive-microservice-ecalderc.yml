@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_88ccb89f37d74c6cbaea9ed17fa0781f }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_795d076341a04345a986af490e2e538f }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_5f5650670b55449ab5cb9e58c9e099db }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_05d94b930ab6467894dba1ab334e7a82 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_88ccb89f37d74c6cbaea9ed17fa0781f }}/ebercalderon/passive-microservice:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_5f5650670b55449ab5cb9e58c9e099db }}/passive-microservice:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'passive-microservice-ecalderc'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_aed33d65987d477d93e612dc11c7efb0 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_88ccb89f37d74c6cbaea9ed17fa0781f }}/ebercalderon/passive-microservice:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_09b64964050c4703a5219f9d9cc8c20e }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_5f5650670b55449ab5cb9e58c9e099db }}/passive-microservice:${{ github.sha }}'
